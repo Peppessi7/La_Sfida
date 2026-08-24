@@ -186,7 +186,11 @@ export default function App() {
           </section>
 
           <section className="min-w-0 md:col-span-3 md:row-start-3">
-            <PokerButtons players={gameState.players} onPoker={handlePoker} />
+            <PokerButtons
+              players={gameState.players}
+              onPoker={handlePoker}
+              onRestart={handleNewGame}
+            />
           </section>
 
           <div

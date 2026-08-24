@@ -1,7 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FinalResult as FinalResultType, PlayerState } from "../lib/gameLogic";
-import { ArrowLeft, RotateCcw } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { ScoreBreakdownList } from "./ScoreBreakdown";
+import { RestartGameButton } from "./RestartGameButton";
 
 interface FinalResultProps {
   result: FinalResultType | null;
@@ -77,18 +78,12 @@ export function FinalResult({
             />
           </div>
 
-          <button
-            type="button"
-            onClick={() => {
-              if (window.confirm("Iniziare una nuova partita?")) {
-                onNewGame();
-              }
-            }}
-            className="w-full h-14 bg-primary text-primary-foreground font-bold text-lg rounded-xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors"
-          >
-            <RotateCcw className="w-5 h-5" />
-            NUOVA PARTITA
-          </button>
+          <RestartGameButton
+            onRestart={onNewGame}
+            label="NUOVA PARTITA"
+            requireConfirmation={false}
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-lg font-bold text-primary-foreground transition-colors hover:bg-primary/90"
+          />
           <button
             type="button"
             onClick={onBack}
